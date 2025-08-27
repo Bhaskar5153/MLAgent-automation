@@ -37,6 +37,6 @@ def load_file(file_path:str) -> pd.DataFrame:
 
 if __name__ == "__main__":
     # Example usage
-    file_path = r"C:\\Users\\Priya Bhaskar\\OneDrive\\Documents\\ml_agent_project\\data\\Bengaluru_House_Data.csv"
+    file_path = r"..\\data\\Bengaluru_House_Data.csv"
     df = load_file(file_path)
     print(df.head())

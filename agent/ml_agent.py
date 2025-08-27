@@ -118,7 +118,7 @@ class MLAgent:
         return nb
 
 if __name__ == "__main__":
-    file_path = r"C:\\Users\\Priya Bhaskar\\OneDrive\\Documents\\ml_agent_project\\data\\Bengaluru_House_Data.csv"
+    file_path = r"..\\data\\Bengaluru_House_Data.csv"
     df = load_file(file_path)
     agent = MLAgent()
     notebook = agent.analyze_file(df, notebook_name=agent.notebook_name)
