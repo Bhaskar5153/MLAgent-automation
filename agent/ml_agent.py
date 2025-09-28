@@ -1,6 +1,7 @@
 # ml_agent.py
 import os
 import sys
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 import json
 from datetime import datetime
 from typing import List, Dict, Any
@@ -31,7 +32,7 @@ class MLAgent:
     def analyze_file(self, df: pd.DataFrame, notebook_name: str = None) -> NotebookNode:
         """Generate a structured Jupyter notebook from a DataFrame."""
         schema = {col: str(df[col].dtype) for col in df.columns}
-        data_sample = df.head(20).to_dict(orient="records")
+        data_sample = df.head(10).to_dict(orient="records")
 
         prompt = f"""
             You are a machine learning expert. Given the following dataset schema and sample data, generate a Jupyter notebook.
@@ -43,6 +44,7 @@ class MLAgent:
             {data_sample}
 
             Instructions:
+            - Create architecture diagram using https://app.diagrams.net/ and download it as .svg file.
             - Return the notebook as plain text.
             - Use [MARKDOWN] to indicate markdown cells.
             - Use [CODE] to indicate Python code cells.
@@ -54,15 +56,24 @@ class MLAgent:
             2. Data Loading
             3. EDA
             4. Preprocessing
-            5. Feature selection based on EDA
-            6. Modeling
-            7. Evaluation
-            8. Create example dataset with features used for modeling and make predictions on it
-            9. Insights
-            10. Conclusion
+            5. Visual representation of EDA. build various plots that explains data well and perform great analysis. use plotly library to build various plots.
+            6. Visual representation of correlation, covariance and explain the plots very clearly.
+            7. Feature selection based on EDA
+            8. Separate the selected features for training, explain why selected features are taken. 
+            8. Modeling
+            9. Evaluation metrics that is suitable for the tasks.
+            10. Explain Local minima vs Global minima and Visual representation of gradients decent using the dataset.
+            11. Explain Risuduals and how to visualize it. Compare the metrics to suggest how to improve them.
+            12. Explain overfitting or underfitting if it exists. explain how to fix it.
+            13. Create example dataset with features used for modeling and make predictions on it
+            14. Hyperparameter tuning on sample or small dataset
+            15. Visual representation of the results, Comparision between predicted and true data.
+            16. Final model selection based on best result.
+            17. Insights
+            18. Conclusion
             - The sample data is provided for context to understand the stucture and types of data.
             - Ensure to load the full dataset from the CSV file given in the file path.
-            - All the instructions from 1 to 10 should followed on the full dataset.
+            - All the instructions from 1 to 18 should followed on the full dataset.
             - If the dataset contains missing values, handle them without fail before preprocessing.
             - Include feature engineering steps if applicable.
             - Use appropriate machine learning models based on the dataset.
@@ -116,18 +127,20 @@ class MLAgent:
 
         nb['cells'] = cells
         return nb
+    
+    
 
 if __name__ == "__main__":
-    file_path = r"..\\data\\Bengaluru_House_Data.csv"
+    file_path = r"..Documents\ml_agent_project\data\insurance.csv"
     df = load_file(file_path)
     agent = MLAgent()
     notebook = agent.analyze_file(df, notebook_name=agent.notebook_name)
 
-    # Save notebook as valid .ipynb
+    # Save notebook
     notebooks_dir = 'notebooks'
     os.makedirs(notebooks_dir, exist_ok=True)
     notebook_path = os.path.join(notebooks_dir, agent.notebook_name)
     with open(notebook_path, 'w', encoding='utf-8') as f:
         nbformat.write(notebook, f)
-
     print(f"Notebook saved to: {notebook_path}")
+
