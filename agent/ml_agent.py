@@ -133,7 +133,7 @@ class MLAgent:
     
 
 if __name__ == "__main__":
-    file_path = r"C:\Users\Priya Bhaskar\OneDrive\Documents\ml_agent_repo_1\MLAgent-automation\data\framingham.csv"
+    file_path = r"..\MLAgent-automation\data\framingham.csv"
     df = load_file(file_path)
     agent = MLAgent()
     notebook = agent.analyze_file(df, notebook_name=agent.notebook_name)
