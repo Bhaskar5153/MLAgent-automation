@@ -51,12 +51,15 @@ class MLAgent:
             - Do not use triple backticks or any other formatting.
             - Each section should start with either [MARKDOWN] or [CODE].
             - Include inline comments in code cells.
+            - Add logging to see the flow of data and any issues that arise.
+            - Include error handling to manage exceptions and provide informative messages.
+            - Create a folder named ml_logs to store log files.
             - The notebook should include: 
             1. Introduction
-            2. Data Loading
+            2. Data Loading (load the dataset from data directory)
             3. EDA
             4. Preprocessing and make sure outliers are handled if they exist.
-            5. Visual representation of EDA. build various plots that explains data well and perform great analysis. use plotly library to build various plots.
+            5. Visual representation of EDA. build various plots that explains data well and perform great analysis. use plotly library to build various plots. Explain the each plot in markdown cell below the code cell.
             6. Visual representation of correlation, covariance and explain the plots very clearly.
             7. Feature selection based on EDA
             8. Separate the selected features for training, explain why selected features are taken. 
@@ -64,13 +67,13 @@ class MLAgent:
             - Ensure to get best results using appropriate techniques based on the task.
             10. Evaluation metrics that is suitable for the tasks.
             11. Explain Local minima vs Global minima and Visual representation of gradients decent using the dataset.
-            12. Explain Risuduals and how to visualize it. Compare the metrics to suggest how to improve them.
+            12. Explain Risuduals and how to visualize it. Explain the comparison and the metrics to suggest how to improve them.
             13. Explain overfitting or underfitting if it exists. explain how to fix it.
             14. Create example dataset with features used for modeling and make predictions on it
             15. Hyperparameter tuning on sample or small dataset
-            16. Visual representation of the results, Comparision between predicted and true data.
+            16. Visual representation of the results, explain the comparision between predicted and true data.
             17. Final model selection based on best result.
-            18. Save the model using pickle library.
+            18. Ensure to save the final model using pickle library and create a folder named artifacts to store the model. Note: The artifacts folder should be created in the root directory.
             19. Insights
             20. Conclusion
             - The sample data is provided for context to understand the stucture and types of data.
@@ -133,7 +136,7 @@ class MLAgent:
     
 
 if __name__ == "__main__":
-    file_path = r"..\MLAgent-automation\data\framingham.csv"
+    file_path = r"C:\Users\Priya Bhaskar\OneDrive\Documents\ml_agent_repo_1\MLAgent-automation\data\framingham.csv"
     df = load_file(file_path)
     agent = MLAgent()
     notebook = agent.analyze_file(df, notebook_name=agent.notebook_name)
