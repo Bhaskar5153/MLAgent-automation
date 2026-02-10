@@ -59,14 +59,13 @@ class MLAgent:
             2. Data Loading (load the dataset from data directory)
             3. EDA
             4. Preprocessing and make sure outliers are handled if they exist.
-            5. Visual representation of EDA. build various plots that explains data well and perform great analysis. use plotly library to build various plots. Explain the each plot in markdown cell below the code cell.
+            5. Visual representation of EDA. build various plots that explains data well and perform great analysis. use matplotlib and seaborn for plotting. Explain the each plot in markdown cell below the code cell.
             6. Visual representation of correlation, covariance and explain the plots very clearly.
             7. Feature selection based on EDA
             8. Separate the selected features for training, explain why selected features are taken. 
-            9. Modeling. if it is regression or classification or clustering, use appropriate models and explain why the model is selected.
+            9. Modeling. if it is regression or classification or clustering, use appropriate models and explain why the model is selected. Ensure to make classification report and confusion matrix if it is classification. Ensure to make classification for classification model and regression report for regression model. Ensure to make silhouette score and elbow method for clustering model. Ensure to explain the results of the models in markdown cells.
             - Ensure to get best results using appropriate techniques based on the task.
             10. Evaluation metrics that is suitable for the tasks.
-            11. Explain Local minima vs Global minima and Visual representation of gradients decent using the dataset.
             12. Explain Risuduals and how to visualize it. Explain the comparison and the metrics to suggest how to improve them.
             13. Explain overfitting or underfitting if it exists. explain how to fix it.
             14. Create example dataset with features used for modeling and make predictions on it
@@ -136,7 +135,7 @@ class MLAgent:
     
 
 if __name__ == "__main__":
-    file_path = r"C:\Users\Priya Bhaskar\OneDrive\Documents\ml_agent_repo_1\MLAgent-automation\data\tweet_emotions.csv"
+    file_path = r"C:\Users\Priya Bhaskar\OneDrive\Documents\heath_check_project\health_check_result\app\data\healthcare_dataset.csv"
     df = load_file(file_path)
     agent = MLAgent()
     notebook = agent.analyze_file(df, notebook_name=agent.notebook_name)
