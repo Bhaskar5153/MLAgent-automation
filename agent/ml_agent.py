@@ -135,7 +135,7 @@ class MLAgent:
     
 
 if __name__ == "__main__":
-    file_path = r"C:\Users\Priya Bhaskar\OneDrive\Documents\heath_check_project\health_check_result\app\data\healthcare_dataset.csv"
+    file_path = r"C:\Users\Priya Bhaskar\Downloads\amazon.csv\amazon.csv"
     df = load_file(file_path)
     agent = MLAgent()
     notebook = agent.analyze_file(df, notebook_name=agent.notebook_name)
